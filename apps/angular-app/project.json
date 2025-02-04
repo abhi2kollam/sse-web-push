@@ -8,12 +8,16 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/angular-app",
         "index": "apps/angular-app/src/index.html",
         "browser": "apps/angular-app/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/angular-app/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
@@ -22,7 +26,9 @@
             "input": "apps/angular-app/public"
           }
         ],
-        "styles": ["apps/angular-app/src/styles.scss"],
+        "styles": [
+          "apps/angular-app/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -39,12 +45,14 @@
               "maximumError": "8kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "serviceWorker": "apps/angular-app/ngsw-config.json"
         },
         "development": {
           "optimization": false,
           "extractLicenses": false,
-          "sourceMap": true
+          "sourceMap": true,
+          "serviceWorker": "apps/angular-app/ngsw-config.json"
         }
       },
       "defaultConfiguration": "production"
@@ -53,10 +61,11 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "buildTarget": "angular-app:build:production"
+          "buildTarget": "angular-app:build:production",
         },
         "development": {
-          "buildTarget": "angular-app:build:development"
+          "buildTarget": "angular-app:build:development",
+          "proxyConfig": "apps/angular-app/proxy.dev.json"
         }
       },
       "defaultConfiguration": "development"
@@ -72,7 +81,9 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/angular-app/jest.config.ts"
       }
